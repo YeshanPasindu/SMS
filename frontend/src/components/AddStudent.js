@@ -63,7 +63,7 @@ export const AddStudent = () => {
       <div className="form text-[25px] font-[400]  w-[600px] ml-[50px] mt-[20px]">
         <form>
           <div className="form-input mb-[10px]">
-            <label className="">Student Name :</label>
+            <label className="">Student name :</label>
             <input
               type="text"
               className="form-control border rounded-md "
