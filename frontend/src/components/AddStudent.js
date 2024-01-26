@@ -12,10 +12,11 @@ export const AddStudent = () => {
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
 
-  const saveOrUpdateStudent = (e) => {
-    e.preventDefault();
+  const saveOrUpdateStudent = () => {
+    
 
     const student = { name, email, address, number };
+    const type = "cStudent";
 
     if (id) {
       StudentService.updateStudent(id, student)
@@ -26,7 +27,7 @@ export const AddStudent = () => {
           console.log(error);
         });
     } else {
-      StudentService.createStudent(student)
+      StudentService.create(student,type)
         .then((response) => {
           navigate("/");
         })
@@ -47,7 +48,7 @@ export const AddStudent = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  });
 
   const title = () => {
     if (id) {
@@ -100,7 +101,7 @@ export const AddStudent = () => {
           </div>
           <button
             className="w-[75px] h-[32px] bg-blue-700 rounded-md text-white text-sm ml-[260px] font-sans font-[600] mt-[30px] flex"
-            onClick={(e) => saveOrUpdateStudent(e)}
+            onClick={(e) => saveOrUpdateStudent()}
           >
             <p className="pt-[5px] ml-[20px] text-center">SAVE</p>
           </button>

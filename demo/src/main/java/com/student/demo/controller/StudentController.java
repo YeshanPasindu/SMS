@@ -2,7 +2,9 @@ package com.student.demo.controller;
 
 import com.student.demo.exception.ResourceNotFoundException;
 import com.student.demo.model.student;
+import com.student.demo.model.subject;
 import com.student.demo.repository.StudentRepository;
+import com.student.demo.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +20,30 @@ public class StudentController {
     @Autowired
     private StudentRepository studentRepository;
 
-    @GetMapping
-    public List<student> getStudent(){
+    @Autowired
+    private SubjectRepository subjectRepository;
+
+    @GetMapping("/gStudent")
+    public List<student> getAllStudent(){
 
         return studentRepository.findAll();
     }
 
-    @PostMapping
+    @GetMapping("/gSubject")
+    public List<subject> getSubject(){
+
+        return subjectRepository.findAll();
+    }
+
+    @PostMapping("/cStudent")
     public student createStudent(@RequestBody student Student){
 
         return studentRepository.save(Student);
+    }
+
+    @PostMapping("/cSubject")
+    public subject createSubject(@RequestBody subject Subject){
+        return subjectRepository.save(Subject);
     }
 
     @GetMapping("{id}")

@@ -3,12 +3,16 @@ import axios from "axios";
 const STUDENT_BASE_REST_API_URL = "http://localhost:8080/api/v1/students";
 
 class StudentService {
-  getAllStudents() {
-    return axios.get(STUDENT_BASE_REST_API_URL);
+  getAll(type) {
+    return axios.get(STUDENT_BASE_REST_API_URL+"/"+ type);
   }
 
-  createStudent(student) {
-    return axios.post(STUDENT_BASE_REST_API_URL, student);
+  // getAll() {
+  //   return axios.get(STUDENT_BASE_REST_API_URL+"/gStudent");
+  // }
+
+  create(details,type) {
+    return axios.post(STUDENT_BASE_REST_API_URL+ "/"+type , details);
   }
 
   deleteStudent(studentId) {
